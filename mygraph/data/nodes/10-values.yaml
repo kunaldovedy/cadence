@@ -1,0 +1,55 @@
+# Stage 1 — what must stay true. These are the reasons the rest exists.
+- id: v-connected-creativity
+  type: value
+  label: Connected Creativity
+  subtitle: The banner over all of it
+  summary: >-
+    Creativity is not a solo act. The work is worth doing when it connects
+    people to each other, and connects the technical to the human.
+  source: public-web
+  confidence: high
+  refs: [https://www.kunaldovedy.com/]
+
+- id: v-enhance-humanity
+  type: value
+  label: Enhance humanity
+  subtitle: The test a project has to pass
+  summary: >-
+    Dovedy LLC was founded for multidisciplinary projects meant to enhance
+    humanity. That is the filter: does this leave people better off.
+  source: public-profile
+  confidence: high
+  refs: [https://www.linkedin.com/in/kdovedy/]
+
+- id: v-collaboration
+  type: value
+  label: Build the team, not the hero
+  subtitle: Capability over dependency
+  summary: >-
+    Collaborative teams are named in his own one-line description of the work.
+    Success looks like a group that can carry on without him.
+  source: inferred
+  confidence: medium
+
+- id: v-play-as-doorway
+  type: value
+  label: Play is the doorway
+  subtitle: Discovery before instruction
+  summary: >-
+    At Burning Man 2013 nobody handed out instructions. Participants worked
+    out how to play a jet engine by dropping ball bearings into it. Curiosity
+    did the teaching.
+  source: public-web
+  confidence: medium
+  refs: [http://www.turbinophone.com/]
+
+- id: v-machines-can-sing
+  type: value
+  label: Machines can sing
+  subtitle: Repurpose, do not scrap
+  summary: >-
+    A compressor that pushed an F-4 Phantom past Mach 2 now rings like a set
+    of tuning forks. Hard engineering can be turned toward wonder.
+  source: public-web
+  confidence: medium
+  refs: [http://www.turbinophone.com/]

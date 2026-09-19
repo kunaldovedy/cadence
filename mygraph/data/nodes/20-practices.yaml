@@ -1,0 +1,45 @@
+# Stage 2 — the four verbs. These come from his own public one-liner.
+- id: p-product-design
+  type: practice
+  label: Designing products
+  subtitle: From a vague need to a thing that ships
+  summary: >-
+    Product design across digital customer experience: work out what people
+    actually need, then get a team to build it.
+  source: public-web
+  confidence: high
+  refs: [https://www.kunaldovedy.com/]
+
+- id: p-transformation
+  type: practice
+  label: Advising digital transformation
+  subtitle: Changing how an organisation works, not just its tools
+  summary: >-
+    Guiding organisations through systemic change with technology. The current
+    seat is Senior Director of Digital Customer Experience Transformation at
+    Ralliant; the consulting seat is Sierra Technology.
+  source: public-profile
+  confidence: high
+  refs: [https://www.linkedin.com/in/kdovedy/]
+
+- id: p-teams
+  type: practice
+  label: Building collaborative teams
+  subtitle: The durable deliverable
+  summary: >-
+    Assembling and leading teams across functions, countries and time zones,
+    so that the capability stays after the project ends.
+  source: public-web
+  confidence: high
+  refs: [https://www.kunaldovedy.com/]
+
+- id: p-art-music
+  type: practice
+  label: Creating interactive art and music
+  subtitle: Where strangers become collaborators
+  summary: >-
+    Large scale interactive sound art and music, made to be played by whoever
+    walks up to it.
+  source: public-web
+  confidence: high
+  refs: [https://www.kunaldovedy.com/]
