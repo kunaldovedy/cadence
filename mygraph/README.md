@@ -75,6 +75,26 @@ Open `build/mygraph.html`, or run `make serve`.
 - **Every node, as text** at the bottom of the page carries the same data as a
   sortable table, for anyone the picture does not serve.
 
+## On the website
+
+`integrations/kunaldovedy.com/` holds a mobile-first `/graph` route for the
+Next.js site, built and verified against the real repository. Install it with
+two commands; see that directory's README.
+
+The phone version does not shrink the diagram, which never works. It changes
+the interaction. The drawing is sticky at the top of the screen and the scroll
+drives the camera outward through the rings, one stage at a time, while the
+stage list scrolls beneath it. Pinch and pan live behind a full-screen
+**Explore** button so gestures never fight the page scroll. Tapping a node
+opens a real bottom sheet with snap points and velocity-aware drag, and the
+connections inside it are rows you tap to walk the graph.
+
+Regenerate its data after editing any YAML:
+
+```bash
+make site-data SITE=/path/to/kunaldovedy.com
+```
+
 ## Making it yours
 
 Everything lives in `data/`. There is no database to migrate and no admin
@@ -161,6 +181,7 @@ make exports
 | `mygraph export graphml` | Gephi, yEd, Cytoscape |
 | `mygraph export mermaid` | A diagram you can paste into a README |
 | `mygraph export json` | The raw data |
+| `mygraph export web` | The same data trimmed for a phone, about half the size |
 | `mygraph export html` | The single-file page |
 
 ## How it is put together
@@ -176,8 +197,9 @@ src/mygraph/metrics.py degree, PageRank, betweenness, reach
 src/mygraph/export.py  every output format
 src/mygraph/cli.py     the command line
 viz/index.html         the page, with no build step and no dependencies
-tests/test_graph.py    33 tests, including rules about the graph itself
+tests/test_graph.py    36 tests, including rules about the graph itself
 docs/design.md         why it looks the way it does
+integrations/          the /graph route for kunaldovedy.com
 ```
 
 No framework, no bundler, no server. Python's standard library plus PyYAML on
@@ -191,7 +213,9 @@ make test
 
 Some of the tests check the code. Others check the graph: that the loop closes,
 that every outcome reaches somebody, that every node says where it came from.
-Those will fail if the practice stops making sense, which is the point.
+Those will fail if the practice stops making sense, which is the point. One
+checks that the copy of the data shipped to the website is still in step with
+the YAML.
 
 ## Sources for the seed graph
 

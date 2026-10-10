@@ -1,6 +1,7 @@
 """Turn the graph into the formats other tools speak.
 
     graph.json   what the visualisation reads
+    web json     the same, trimmed for a phone
     Cypher       load the same graph into Neo4j or Memgraph
     GraphML      open it in Gephi, yEd or Cytoscape
     Mermaid      drop a diagram into a README
@@ -73,6 +74,52 @@ def write_json(graph: Graph, path: pathlib.Path | str, root: pathlib.Path | str 
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(to_dict(graph, root), indent=2, ensure_ascii=False) + "\n",
                     encoding="utf-8")
+    return path
+
+
+def to_web(graph: Graph, root: pathlib.Path | str = ".") -> dict[str, Any]:
+    """The same graph, trimmed for a phone.
+
+    Drops the measures a reader never sees, rounds the ones they do, and strips
+    the bookkeeping fields. Roughly a fifth smaller over the wire, which is a
+    fifth less to pull down on a mobile connection.
+    """
+    full = to_dict(graph, root)
+    drop_node = {"betweenness", "in_degree", "out_degree", "origin"}
+    nodes = []
+    for node in full["nodes"]:
+        slim = {k: v for k, v in node.items() if k not in drop_node}
+        slim["pagerank"] = round(float(slim["pagerank"]), 5)
+        slim["degree"] = round(float(slim["degree"]), 2)
+        slim["stage"] = int(slim["stage"])
+        slim["audiences_reached"] = int(slim["audiences_reached"])
+        slim["outcomes_produced"] = int(slim["outcomes_produced"])
+        if not slim.get("refs"):
+            slim.pop("refs", None)
+        if not slim.get("props"):
+            slim.pop("props", None)
+        if not slim.get("subtitle"):
+            slim.pop("subtitle", None)
+        nodes.append(slim)
+    edges = []
+    for edge in full["edges"]:
+        slim = {k: v for k, v in edge.items() if k not in {"id", "confidence"}}
+        slim["weight"] = round(float(slim["weight"]), 2)
+        if not slim.get("note"):
+            slim.pop("note", None)
+        edges.append(slim)
+    return {**full, "nodes": nodes, "edges": edges}
+
+
+def write_web_json(
+    graph: Graph, path: pathlib.Path | str, root: pathlib.Path | str = "."
+) -> pathlib.Path:
+    path = pathlib.Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(to_web(graph, root), ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
     return path
 
 

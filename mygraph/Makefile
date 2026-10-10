@@ -35,3 +35,10 @@ clean:           ## Remove everything that is derived
 all: check build test ## Check, build and test
 
 .PHONY: help install check build test stats serve exports clean all
+
+site-data:       ## Write the web payload into a site checkout (SITE=/path/to/site)
+	@test -n "$(SITE)" || (echo "set SITE=/path/to/kunaldovedy.com" && exit 1)
+	$(PY) -m mygraph export web --out "$(SITE)/src/app/graph/graph-data.json"
+	$(PY) -m mygraph export web --out integrations/kunaldovedy.com/app/graph/graph-data.json
+
+.PHONY: site-data

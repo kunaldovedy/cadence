@@ -246,3 +246,34 @@ def test_single_file_page_inlines_the_data(graph: Graph, tmp_path: pathlib.Path)
 
 def test_the_page_template_still_has_its_marker() -> None:
     assert export.DATA_MARKER in (ROOT / "viz" / "index.html").read_text()
+
+
+def test_web_export_is_smaller_and_still_complete(graph: Graph) -> None:
+    """The phone payload drops the measures nobody reads, not the content."""
+    full = export.to_dict(graph, ROOT)
+    web = export.to_web(graph, ROOT)
+    assert len(web["nodes"]) == len(full["nodes"])
+    assert len(web["edges"]) == len(full["edges"])
+    assert len(json.dumps(web)) < len(json.dumps(full))
+    for node in web["nodes"]:
+        assert "betweenness" not in node
+        assert node["label"] and node["summary"]
+        assert isinstance(node["stage"], int)
+    for edge in web["edges"]:
+        assert edge["src"] and edge["dst"] and edge["rel_label"]
+
+
+def test_web_export_writes_a_single_line_file(graph: Graph, tmp_path: pathlib.Path) -> None:
+    path = export.write_web_json(graph, tmp_path / "web.json", ROOT)
+    payload = json.loads(path.read_text())
+    assert payload["meta"]["subject"] == graph.ontology.subject
+
+
+def test_the_site_payload_is_in_step_with_the_data(graph: Graph) -> None:
+    """The copy committed for kunaldovedy.com must match the graph."""
+    shipped = ROOT / "integrations" / "kunaldovedy.com" / "app" / "graph" / "graph-data.json"
+    if not shipped.exists():
+        pytest.skip("no site integration in this checkout")
+    payload = json.loads(shipped.read_text())
+    assert payload["meta"]["node_count"] == len(graph.nodes)
+    assert payload["meta"]["edge_count"] == len(graph.edges)

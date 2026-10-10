@@ -8,7 +8,7 @@
     mygraph path <a> <b>          shortest path
     mygraph reach [id]            audiences reached, and how far away they are
     mygraph top [measure]         leaderboard
-    mygraph export <format>       json | cypher | graphml | mermaid | html
+    mygraph export <format>       json | web | cypher | graphml | mermaid | html
     mygraph serve                 open the visualisation on localhost
 """
 
@@ -192,6 +192,8 @@ def cmd_export(args: argparse.Namespace) -> int:
     graph = _load(args)
     if args.format == "json":
         text = json.dumps(export.to_dict(graph, root), indent=2, ensure_ascii=False)
+    elif args.format == "web":
+        text = json.dumps(export.to_web(graph, root), ensure_ascii=False, separators=(",", ":"))
     elif args.format == "cypher":
         text = export.to_cypher(graph)
     elif args.format == "graphml":
@@ -274,7 +276,7 @@ def build_parser() -> argparse.ArgumentParser:
     top.set_defaults(func=cmd_top)
 
     exp = sub.add_parser("export", help="export to another format")
-    exp.add_argument("format", choices=["json", "cypher", "graphml", "mermaid", "html"])
+    exp.add_argument("format", choices=["json", "web", "cypher", "graphml", "mermaid", "html"])
     exp.add_argument("--out", help="write to this file instead of standard output")
     exp.set_defaults(func=cmd_export)
 
