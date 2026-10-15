@@ -33,3 +33,8 @@
 - { src: p-art-music, rel: serves, dst: a-festival-participants, weight: 1.6, source: public-web, confidence: high }
 - { src: p-art-music, rel: serves, dst: a-museum-visitors, weight: 1.6, source: public-web, confidence: high }
 - { src: p-art-music, rel: serves, dst: a-makers, source: public-web, confidence: high }
+
+# The fifth practice serves the people who have to decide with the data.
+- { src: p-transparency, rel: serves, dst: a-executives, weight: 1.6, source: inferred, confidence: medium }
+- { src: p-transparency, rel: serves, dst: a-field-teams, weight: 1.4, source: inferred, confidence: medium }
+- { src: p-transparency, rel: serves, dst: a-colleagues, source: inferred, confidence: low }

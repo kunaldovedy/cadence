@@ -80,3 +80,33 @@
     Getting a room of people with different incentives to agree on one next step.
   source: inferred
   confidence: low
+
+- id: c-rapid-prototyping
+  type: capability
+  label: Rapid prototyping
+  summary: >-
+    A named Sierra Technology service: build working digital applications fast
+    enough to test them against the business case.
+  source: public-web-indexed
+  confidence: high
+  refs: [https://sierra.technology/]
+
+- id: c-data-architecture
+  type: capability
+  label: Data strategy and architecture
+  summary: >-
+    A named Sierra Technology service: define the data strategy, then architect
+    and develop the infrastructure needed to democratize the data.
+  source: public-web-indexed
+  confidence: high
+  refs: [https://sierra.technology/]
+
+- id: c-solution-advisory
+  type: capability
+  label: Solution advisory
+  summary: >-
+    A named Sierra Technology service: which technologies are practical to
+    adopt, and how they fit the systems a company already runs.
+  source: public-web-indexed
+  confidence: high
+  refs: [https://sierra.technology/]

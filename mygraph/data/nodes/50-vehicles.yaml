@@ -23,11 +23,17 @@
 - id: o-sierra
   type: vehicle
   label: Sierra Technology
-  subtitle: Consultant
-  summary: A consulting seat held since July 2019.
-  source: public-profile
+  subtitle: Consultant, since July 2019
+  summary: >-
+    A consultancy for digital transformation, aiming to help companies achieve
+    tangible growth in their initiatives and to guide them on the journey to
+    technology excellence. Three named services: rapid prototyping, data
+    transparency, and solution advisory. Its four stated values sit in stage 1
+    of this graph.
+  source: public-web-indexed
   confidence: high
-  props: { kind: client, since: 2019-07 }
+  refs: [https://sierra.technology/]
+  props: { kind: consultancy, since: 2019-07 }
 
 - id: o-fortive
   type: vehicle

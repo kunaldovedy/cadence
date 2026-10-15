@@ -13,3 +13,8 @@
 - { src: c-fabrication, rel: enables, dst: w-turbinophone, weight: 2.0, source: public-web, confidence: high }
 - { src: c-sound-programming, rel: enables, dst: w-cadence, weight: 1.6, source: public-github, confidence: high }
 - { src: c-sound-programming, rel: enables, dst: w-goalhive, source: inferred, confidence: low }
+
+- { src: c-rapid-prototyping, rel: enables, dst: w-cx-transformation, weight: 1.4, source: inferred, confidence: medium }
+- { src: c-data-architecture, rel: enables, dst: w-cx-transformation, weight: 1.6, source: inferred, confidence: medium }
+- { src: c-solution-advisory, rel: enables, dst: w-cx-transformation, weight: 1.4, source: inferred, confidence: medium }
+- { src: c-rapid-prototyping, rel: enables, dst: w-goalhive, source: inferred, confidence: low }

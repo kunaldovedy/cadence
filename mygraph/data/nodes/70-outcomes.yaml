@@ -65,3 +65,14 @@
   summary: Public code that someone else can pick up.
   source: public-github
   confidence: medium
+
+- id: x-data-democratized
+  type: outcome
+  label: Data people can actually use
+  summary: >-
+    Information that is immediate, available and usable, in the hands of the
+    people who have to decide with it, rather than locked behind whoever owns
+    the system.
+  source: public-web-indexed
+  confidence: medium
+  refs: [https://sierra.technology/]

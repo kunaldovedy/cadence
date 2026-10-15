@@ -98,7 +98,11 @@ edge_types:
 # Every node and edge declares where it came from. Nothing in this graph
 # pretends to be a fact that no one can check.
 sources:
-  public-web:    Published on a public web page or press item.
+  public-web:    Published on a public web page or press item, read directly.
+  public-web-indexed: >-
+    Quoted from a public page through a search index rather than read directly,
+    because the network policy here blocks the host. The wording is the site's
+    own, but confirm it.
   public-github: A public repository owned by the subject.
   public-profile: A public professional profile or org listing.
   inferred:      Read between the lines of the public record. Confirm it.

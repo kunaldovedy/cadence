@@ -24,3 +24,15 @@
 - { src: c-it-operations, rel: formed_by, dst: o-servicechannel, source: public-profile, confidence: high }
 - { src: c-cx-strategy, rel: formed_by, dst: o-fortive, source: public-profile, confidence: medium }
 - { src: c-distributed-production, rel: formed_by, dst: o-adizes, source: public-profile, confidence: high }
+
+# The fifth practice, and the three Sierra services it runs on.
+- { src: p-transparency, rel: uses, dst: c-data-architecture, weight: 2.0, source: public-web-indexed, confidence: high }
+- { src: p-transparency, rel: uses, dst: c-systems-change, weight: 1.4, source: inferred, confidence: medium }
+- { src: p-transparency, rel: uses, dst: c-cx-strategy, source: inferred, confidence: low }
+- { src: p-product-design, rel: uses, dst: c-rapid-prototyping, weight: 1.8, source: public-web-indexed, confidence: high }
+- { src: p-transformation, rel: uses, dst: c-solution-advisory, weight: 1.6, source: public-web-indexed, confidence: high }
+- { src: p-transformation, rel: uses, dst: c-data-architecture, source: inferred, confidence: medium }
+
+- { src: c-rapid-prototyping, rel: formed_by, dst: o-sierra, source: public-web-indexed, confidence: high }
+- { src: c-data-architecture, rel: formed_by, dst: o-sierra, source: public-web-indexed, confidence: high }
+- { src: c-solution-advisory, rel: formed_by, dst: o-sierra, source: public-web-indexed, confidence: high }

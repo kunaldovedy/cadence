@@ -12,7 +12,7 @@ export const BOX = 1360;
 export const CENTRE = BOX / 2;
 
 /** Ring radius per stage. Stage 0 is the centre. */
-export const RADII = [0, 66, 128, 188, 244, 296, 344, 390];
+export const RADII = [0, 92, 152, 206, 256, 302, 348, 392];
 
 export function ringRadius(stage: number): number {
   return RADII[Math.min(stage, RADII.length - 1)];
